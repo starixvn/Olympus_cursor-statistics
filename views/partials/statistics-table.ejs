@@ -1,15 +1,13 @@
 <table class="statistics-table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Tabs Accepted</th>
-            <th>Premium Requests Used</th>
-            <th>Max Request Usage</th>
-            <th>Copilot Usage</th>
-            <th>Docs Count</th>
-            <th>Model Type</th>
+            <th data-sort="name">Name <span class="sort-icon">↕</span></th>
+            <th data-sort="email">Email <span class="sort-icon">↕</span></th>
+            <th data-sort="role">Role <span class="sort-icon">↕</span></th>
+            <th data-sort="copilotAcceptedUsage">Tabs Accepted <span class="sort-icon">↕</span></th>
+            <th data-sort="numRequests">Premium Requests Used <span class="sort-icon">↕</span></th>
+            <th data-sort="maxRequestUsage">Max Request Usage <span class="sort-icon">↕</span></th>
+            <th data-sort="copilotUsage">Copilot Usage <span class="sort-icon">↕</span></th>
         </tr>
     </thead>
     <tbody>
@@ -22,8 +20,6 @@
                 <td><%= member.numRequests %></td>
                 <td><%= member.maxRequestUsage %></td>
                 <td><%= member.copilotUsage %></td>
-                <td><%= member.docsCount %></td>
-                <td><%= member.modelType %></td>
             </tr>
         <% }); %>
     </tbody>

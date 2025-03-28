@@ -51,6 +51,26 @@
         font-weight: 600;
         color: #495057;
         border-bottom: 2px solid #808080;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .statistics-table th:hover {
+        background-color: #e9ecef;
+    }
+
+    .sort-icon {
+        display: inline-block;
+        margin-left: 5px;
+        font-size: 0.8em;
+    }
+
+    .sort-asc .sort-icon::after {
+        content: "↑";
+    }
+
+    .sort-desc .sort-icon::after {
+        content: "↓";
     }
 
     .statistics-table tr:last-child td {
@@ -78,7 +98,65 @@
 
 <%- contentFor('script') %>
 <script type="text/javascript">
-    console.log("Hello World");
+    document.addEventListener('DOMContentLoaded', function() {
+        const table = document.querySelector('.statistics-table');
+        const headers = table.querySelectorAll('th');
+        let currentSort = {
+            column: null,
+            direction: 'asc'
+        };
+
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const column = header.dataset.sort;
+                const direction = currentSort.column === column && currentSort.direction === 'asc' ? 'desc' : 'asc';
+                
+                // Remove sort classes from all headers
+                headers.forEach(h => {
+                    h.classList.remove('sort-asc', 'sort-desc');
+                });
+
+                // Add sort class to current header
+                header.classList.add(`sort-${direction}`);
+
+                // Sort the table
+                sortTable(column, direction);
+                
+                currentSort = { column, direction };
+            });
+        });
+
+        function sortTable(column, direction) {
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            rows.sort((a, b) => {
+                const aValue = a.querySelector(`td:nth-child(${getColumnIndex(column)})`).textContent;
+                const bValue = b.querySelector(`td:nth-child(${getColumnIndex(column)})`).textContent;
+
+                // Handle numeric values
+                if (!isNaN(aValue) && !isNaN(bValue)) {
+                    return direction === 'asc' 
+                        ? Number(aValue) - Number(bValue)
+                        : Number(bValue) - Number(aValue);
+                }
+
+                // Handle string values
+                return direction === 'asc'
+                    ? aValue.localeCompare(bValue)
+                    : bValue.localeCompare(aValue);
+            });
+
+            // Clear and re-append sorted rows
+            tbody.innerHTML = '';
+            rows.forEach(row => tbody.appendChild(row));
+        }
+
+        function getColumnIndex(column) {
+            const headers = Array.from(table.querySelectorAll('th'));
+            return headers.findIndex(header => header.dataset.sort === column) + 1;
+        }
+    });
 </script>
 
 
