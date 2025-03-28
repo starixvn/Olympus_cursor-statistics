@@ -1,0 +1,30 @@
+<table class="statistics-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Tabs Accepted</th>
+            <th>Premium Requests Used</th>
+            <th>Max Request Usage</th>
+            <th>Copilot Usage</th>
+            <th>Docs Count</th>
+            <th>Model Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% statistics.forEach(function(member) { %>
+            <tr>
+                <td><%= member.name %></td>
+                <td><%= member.email %></td>
+                <td><%= member.role %></td>
+                <td><%= member.copilotAcceptedUsage %></td>
+                <td><%= member.numRequests %></td>
+                <td><%= member.maxRequestUsage %></td>
+                <td><%= member.copilotUsage %></td>
+                <td><%= member.docsCount %></td>
+                <td><%= member.modelType %></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table> 

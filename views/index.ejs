@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="statistics-section">        
+        <% if (typeof error !== 'undefined') { %>
+            <div class="error-message">
+                <%= error %>
+            </div>
+        <% } else if (typeof statistics !== 'undefined' && Array.isArray(statistics)) { %>
+            <div class="statistics-content">
+                <%- include('partials/statistics-table') %>
+            </div>
+        <% } else { %>
+            <div class="loading">
+                Loading statistics...
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- contentFor('style') %>
+<style>
+    .statistics-section {        
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }    
+    .statistics-content {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 4px;
+        overflow-x: auto;
+    }
+
+    .statistics-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 0;
+        border: 2px solid #808080;
+    }
+
+    .statistics-table th,
+    .statistics-table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #808080;
+    }
+
+    .statistics-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        color: #495057;
+        border-bottom: 2px solid #808080;
+    }
+
+    .statistics-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .statistics-table tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .error-message {
+        color: #dc3545;
+        padding: 1rem;
+        background-color: #f8d7da;
+        border-radius: 4px;
+        margin-top: 1rem;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 2rem;
+        color: #6c757d;
+    }
+</style>
+
+<%- contentFor('script') %>
+<script type="text/javascript">
+    console.log("Hello World");
+</script>
+
+
