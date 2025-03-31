@@ -14,12 +14,12 @@
         <% statistics.forEach(function(member) { %>
             <tr>
                 <td><%= member.name %></td>
-                <td><%= member.copilotAcceptedUsage %></td>
-                <td><%= member.numRequests %></td>
-                <td><%= member.copilotUsage %></td>
+                <td style="text-align: right;"><%= member.copilotAcceptedUsage %></td>
+                <td style="text-align: right;"><%= member.numRequests %></td>
+                <td style="text-align: right;"><%= member.copilotUsage %></td>
                 <td><%= member.email %></td>
                 <td><%= member.role %></td>
-                <td><%= member.maxRequestUsage %></td>
+                <td style="text-align: right;"><%= member.maxRequestUsage %></td>
             </tr>
         <% }); %>
     </tbody>
