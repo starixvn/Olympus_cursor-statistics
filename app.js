@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const expressLayouts = require('express-ejs-layouts')
 const { getStatistics } = require('./services/cursor-statistics')
-const expressCache = require('express-cache-middleware')
+const expressCache = require('cache-express')
 const app = express()
 const port = process.env.PORT || 5000
 
