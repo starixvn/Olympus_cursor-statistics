@@ -113,6 +113,7 @@ async function getStatistics() {
         copilotAcceptedUsage: 0,
       }
       let name = member.name
+      let email = member.email
       name = name ? name.trim() : ''
       email = email ? email.trim() : ''
 
