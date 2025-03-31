@@ -2,24 +2,24 @@
     <thead>
         <tr>
             <th data-sort="name">Name <span class="sort-icon">↕</span></th>
-            <th data-sort="email">Email <span class="sort-icon">↕</span></th>
-            <th data-sort="role">Role <span class="sort-icon">↕</span></th>
             <th data-sort="copilotAcceptedUsage">Tabs Accepted <span class="sort-icon">↕</span></th>
             <th data-sort="numRequests">Premium Requests Used <span class="sort-icon">↕</span></th>
-            <th data-sort="maxRequestUsage">Max Request Usage <span class="sort-icon">↕</span></th>
             <th data-sort="copilotUsage">Copilot Usage <span class="sort-icon">↕</span></th>
+            <th data-sort="email">Email <span class="sort-icon">↕</span></th>
+            <th data-sort="role">Role <span class="sort-icon">↕</span></th>
+            <th data-sort="maxRequestUsage">Max Request Usage <span class="sort-icon">↕</span></th>
         </tr>
     </thead>
     <tbody>
         <% statistics.forEach(function(member) { %>
             <tr>
                 <td><%= member.name %></td>
-                <td><%= member.email %></td>
-                <td><%= member.role %></td>
                 <td><%= member.copilotAcceptedUsage %></td>
                 <td><%= member.numRequests %></td>
-                <td><%= member.maxRequestUsage %></td>
                 <td><%= member.copilotUsage %></td>
+                <td><%= member.email %></td>
+                <td><%= member.role %></td>
+                <td><%= member.maxRequestUsage %></td>
             </tr>
         <% }); %>
     </tbody>
