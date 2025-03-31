@@ -118,7 +118,8 @@ async function getStatistics() {
       email = email ? email.trim() : ''
 
       if (!name) {
-        name = email.replace('@starixsoft.com', '')
+        name = email.replace('@starixsoft.com', '')        
+        name = name.replace(/\./g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())
       }
       
       return {
