@@ -112,9 +112,16 @@ async function getStatistics() {
         docsCount: 0,
         copilotAcceptedUsage: 0,
       }
+      let name = member.name
+      name = name ? name.trim() : ''
+      email = email ? email.trim() : ''
 
+      if (!name) {
+        name = email.replace('@starixsoft.com', '')
+      }
+      
       return {
-        name: member.name,
+        name: name,
         email: member.email,
         role: member.role.replace('TEAM_ROLE_', ''),
         ...usage,
